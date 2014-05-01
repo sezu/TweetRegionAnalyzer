@@ -16,5 +16,6 @@ class RegionsController < ApplicationController
   
   def show
     @region = Region.find(params[:id])
+    @tweet_counts = @region.intervals_with_tweet_counts
   end
 end

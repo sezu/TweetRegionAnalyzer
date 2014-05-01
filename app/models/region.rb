@@ -17,6 +17,14 @@ class Region < ActiveRecord::Base
     )
   end
   
+  def intervals_with_tweet_counts
+    Tweet.where('ST_Contains(?, tweets.location)', self.bounding_box)
+         .group(:interval)
+         .order("interval DESC")
+         .limit(30)
+         .count
+  end
+  
   private
   
   def self.create_bounding_box(sw_corner, ne_corner)
