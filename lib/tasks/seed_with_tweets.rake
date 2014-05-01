@@ -9,6 +9,7 @@ namespace :db do
     end
     
     sf = "-122.75,36.8,-121.75,37.8"
+    # all = "-180, -90, 180, 90"
     
     #join all regions together via commas 
     #with sw_corner, ne_corner long/lat pairs 
@@ -17,6 +18,8 @@ namespace :db do
       if object.is_a?(Twitter::Tweet)
         puts object.text
         puts object.created_at
+
+        Tweet.generate_tweet(object.text, object.geo, object.created_at)
       end
     end
   end

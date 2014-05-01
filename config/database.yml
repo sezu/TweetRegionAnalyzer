@@ -5,3 +5,12 @@ development:
   timeout: 5000
   host: localhost
   postgis_extension: postgis
+  
+  
+test:
+  adapter: postgis
+  database: tweet_analyzer_test
+  pool: 5
+  timeout: 5000
+  host: localhost
+  postgis_extension: postgis  
