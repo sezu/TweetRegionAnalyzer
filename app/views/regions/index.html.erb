@@ -1,0 +1,46 @@
+<h1>Regions</h1>
+<% @regions.each do |region| %>
+  <p><%= link_to region.name, region_url(region) %></p>
+<% end %>
+
+<h2>New Region</h2>
+<form action="<%=regions_url%>" method="POST" accept-charset="utf-8">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%=form_authenticity_token%>">
+  
+  <label>
+    Name       
+    <input type="text" name="name">       
+  </label>
+
+  <p>SW Corner</p>
+  
+  <label>
+    Longitude
+    <input type="text" name="sw_long">       
+  </label>
+  
+  <br>
+
+  <label>
+    Latitude
+    <input type="text" name="sw_lat">       
+  </label>
+    
+  <p>NE Corner</p>
+  
+  <label>
+    Longitude
+    <input type="text" name="ne_long">       
+  </label>
+
+  <br>
+
+  <label>
+    Latitude
+    <input type="text" name="ne_lat">       
+  </label>
+
+  <p><input type="submit" value="Create Region"></p>
+</form>
