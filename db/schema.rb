@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430093306) do
+ActiveRecord::Schema.define(version: 20140501002512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "regions", force: true do |t|
+    t.string   "name"
+    t.text     "long_lat_corner_pairs",                                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.spatial  "bounding_box",          limit: {:srid=>4326, :type=>"geometry"}
+  end
 
   create_table "tweets", force: true do |t|
     t.text     "body",                                             null: false
