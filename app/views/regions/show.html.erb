@@ -1,4 +1,6 @@
-<h1>Intervals / Counts</h1>
+<h1><%=@region.name%></h1>
+
+<h2>Intervals / Counts</h2>
 <% @tweet_counts.each do |interval, count| %>
   <p>
     <%=link_to "#{interval}: #{count}", region_url(@region) %>

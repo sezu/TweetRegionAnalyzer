@@ -8,13 +8,14 @@ namespace :db do
       config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
     end
     
-    sf = "-122.75,36.8,-121.75,37.8"
+    # sf = "-122.75,36.8,-121.75,37.8"
     # all = "-180, -90, 180, 90"
     
+    locations = Region.all.map{|r| r.long_lat_corner_pairs }.join(",")
     #join all regions together via commas 
     #with sw_corner, ne_corner long/lat pairs 
     
-    client.filter(:locations => sf) do |object|
+    client.filter(:locations => locations) do |object|
       if object.is_a?(Twitter::Tweet)
         puts object.text
         puts object.created_at

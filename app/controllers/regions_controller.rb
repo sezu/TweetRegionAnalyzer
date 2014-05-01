@@ -2,8 +2,8 @@ class RegionsController < ApplicationController
   def create
     Region.generate_region(
       params[:name], 
-      [params[:sw_long], params[:sw_long]],
-      [params[:ne_long], params[:ne_long]]      
+      [params[:sw_long], params[:sw_lat]],
+      [params[:ne_long], params[:ne_lat]]      
     )
     
     @regions = Region.all
